@@ -1,0 +1,81 @@
+## Two Sum
+https://leetcode.com/problems/two-sum/
+
+Solution 1: hash map, time O(N), space O(N)
+```cpp
+class Solution {
+public:
+    vector<int> twoSum(vector<int> &numbers, int target) {
+        vector<int> v(2, 0);
+        unordered_multimap<int, int> numberMap; // (value, index)
+
+        for (int i = 0; i < numbers.size(); ++i) {
+            numberMap.insert(make_pair(numbers[i], i));
+        }
+
+        for (auto x = numberMap.begin(); x != numberMap.end(); ++x) {
+            int temp = target - x->first;
+            auto it = numberMap.find(temp);
+            if (it != numberMap.end() && x != it) {
+                int index1 = x->second;
+                int index2 = it->second;
+                if (index1 < index2) {
+                    v[0] = index1;
+                    v[1] = index2;
+                }
+                else {
+                    v[0] = index2;
+                    v[1] = index1;
+                }
+                return v;
+            }
+        }
+        return v;
+    }
+};
+```
+```java
+public class Solution {
+	public int[] twoSum(int[] nums, int target) {
+		Map<Integer, Integer> map = new HashMap<>();
+		int[] ans = new int[2];
+		for (int i = 0; i < nums.length; i++) {
+			if (map.get(target - nums[i]) != null) {
+				ans[0] = i;
+				ans[1] = map.get(target - nums[i]);
+				return ans;
+			}
+			map.put(nums[i], i);
+		}
+		return ans;
+	}
+}
+```
+Solution 2: Sort, time O(NlogN), space O(N)
+
+https://leetcode.com/discuss/63509/java-o-n-space-and-o-nlogn-time-not-use-map
+```java
+public class Solution {
+	public int[] twoSum(int[] nums, int target) {
+		int[] OriNum = nums.clone();
+		Arrays.sort(nums);
+		int l = 0, r = nums.length - 1;
+		while (l < r) {
+			if (nums[l] + nums[r] == target) {
+				int[] rs = new int[2];
+				int pos = 0;
+				for (int i = 0; i < OriNum.length; i++) {
+					if (OriNum[i] == nums[l] || OriNum[i] == nums[r])
+						rs[pos++] = i;
+				}
+				return rs;
+			}
+			if (nums[l] + nums[r] > target)
+				r--;
+			if (nums[l] + nums[r] < target)
+				l++;
+		}
+		return new int[] { 0, 0 };
+	}
+}
+```
