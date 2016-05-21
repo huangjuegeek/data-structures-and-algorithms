@@ -1,0 +1,36 @@
+## 3Sum Closest
+https://leetcode.com/problems/3sum-closest/
+
+Solution 1:
+```java
+public class Solution {
+	public int threeSumClosest(int[] nums, int target) {
+		Arrays.sort(nums);
+		int sum = nums[0] + nums[1] + nums[nums.length - 1];
+		int closestSum = sum;
+		for (int i = 0; i < nums.length - 2; i++) {
+			if (i > 0 && (nums[i] == nums[i - 1]))
+				continue;
+			for (int j = i + 1, k = nums.length - 1; j < k;) {
+				sum = nums[i] + nums[j] + nums[k];
+				if (sum == target) {
+					return sum;
+				} else if (sum > target) {
+					while ((j < k) && (nums[k] == nums[k - 1]))
+						k--;
+					k--;
+				} else if (sum < target) {
+					while ((j < k) && (nums[j] == nums[j + 1]))
+						j++;
+					j++;
+				}
+				if (Math.abs(sum - target) < Math.abs(closestSum - target)) {
+					closestSum = sum;
+				}
+			}
+		}
+		return closestSum;
+	}
+}
+```
+https://leetcode.com/discuss/83665/share-my-24-line-java-code-beats-94-57%25-run-times
