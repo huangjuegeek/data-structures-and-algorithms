@@ -1,0 +1,40 @@
+## Integer to Roman
+https://leetcode.com/problems/integer-to-roman/
+
+Solution 1:
+
+https://leetcode.com/discuss/49870/my-java-solution-easy-to-understand
+```java
+public class Solution {
+	public String intToRoman(int num) {
+		int[] values = { 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 };
+		String[] strs = { "M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I" };
+
+		StringBuilder sb = new StringBuilder();
+
+		for (int i = 0; i < values.length; i++) {
+			while (num >= values[i]) {
+				num -= values[i];
+				sb.append(strs[i]);
+			}
+		}
+		return sb.toString();
+	}
+}
+```
+Solution 2:
+
+https://leetcode.com/discuss/91819/simple-java-solution
+```java
+public class Solution {
+	private static String M[] = { "", "M", "MM", "MMM" };
+	private static String C[] = { "", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM" };
+	private static String X[] = { "", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC" };
+	private static String I[] = { "", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" };
+
+	public String intToRoman(int num) {
+		StringBuilder roman = new StringBuilder();
+		return roman.append(M[num / 1000]).append(C[(num % 1000) / 100]).append(X[(num % 100) / 10]).append(I[num % 10]).toString();
+	}
+}
+```
