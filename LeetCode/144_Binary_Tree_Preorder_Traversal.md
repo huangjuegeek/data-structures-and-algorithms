@@ -1,0 +1,110 @@
+## Binary Tree Preorder Traversal
+#### Solution 1:
+递归遍历 recursive traversal
+```cpp
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+private:
+    vector<int> res;
+public:
+    vector<int> preorderTraversal(TreeNode* root) {
+        if(root == NULL)
+            return res;
+        res.push_back(root->val);
+        preorderTraversal(root->left);
+        preorderTraversal(root->right);
+        return res;
+    }
+};
+```
+#### Solution 2:
+迭代遍历 iterative traversal
+```cpp
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+private:
+    vector<int> res;
+    stack<TreeNode*> stk;
+public:
+    vector<int> preorderTraversal(TreeNode* root) {
+        TreeNode *cur = root;
+        while (cur || !stk.empty()) {
+            if (cur) {
+                res.push_back(cur->val);    // 与中序遍历的区别只有这一行
+                stk.push(cur);
+                cur = cur->left;
+            }
+            else {
+                cur = stk.top();
+                stk.pop();
+                cur = cur->right;
+            }
+        }
+        return res;
+    }
+};
+```
+#### Solution 3:
+Morris Traversal
+
+http://blog.csdn.net/linhuanmars/article/details/20187257
+
+http://www.cnblogs.com/AnnieKim/archive/2013/06/15/MorrisTraversal.html
+```cpp
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+private:
+    vector<int> res;
+    stack<TreeNode*> stk;
+public:
+    vector<int> preorderTraversal(TreeNode *root) {
+        TreeNode *cur = root, *prev = NULL;
+        while (cur != NULL) {
+            if (cur->left == NULL) {
+                res.push_back(cur->val);
+                cur = cur->right;
+            }
+            else {
+                // find predecessor
+                prev = cur->left;
+                while (prev->right != NULL && prev->right != cur)
+                    prev = prev->right;
+                if (prev->right == NULL) {
+                    res.push_back(cur->val);  //与中序遍历唯一不同的一行
+                    prev->right = cur;
+                    cur = cur->left;
+                }
+                else {
+                    prev->right = NULL;
+                    cur = cur->right;
+                }
+            }
+        }
+        return res;
+    }
+};
+```
