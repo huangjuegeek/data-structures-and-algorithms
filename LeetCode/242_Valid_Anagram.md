@@ -1,7 +1,7 @@
 ## Valid Anagram
 https://leetcode.com/problems/valid-anagram/
 
-变形词，变位词，相同字母异序词
+变形词，变位词，相同字母异序词，即s和t中所有出现过的字母，其出现次数相同
 #### Solution 1:
 Use int array as hashtable
 ```cpp
