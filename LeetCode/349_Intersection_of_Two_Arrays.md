@@ -27,9 +27,12 @@ public:
         unordered_set<int> set1(nums1.begin(), nums1.end());
         vector<int> res;
         for (auto i2 : nums2)
-            if (set1.count(i2)) {
+            /*if (set1.count(i2)) {
                 res.push_back(i2);
                 set1.erase(i2);
+            }*/
+            if (set1.erase(i2)) {
+                res.push_back(i2);
             }
         return res;
     }
