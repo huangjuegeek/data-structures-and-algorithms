@@ -1,7 +1,7 @@
 ## Intersection of Two Arrays
 https://leetcode.com/problems/intersection-of-two-arrays/
 #### Solution 1:
-hash table
+hash set
 ```cpp
 //Using two unordered_set
 class Solution {
@@ -39,7 +39,7 @@ public:
 };
 ```
 #### Solution 2:
-sort
+sort, two pointers
 
 https://leetcode.com/discuss/103224/my-c-solution-with-sort
 ```cpp
