@@ -7,7 +7,7 @@ hash table, using unordered_map:
 
 https://leetcode.com/discuss/103956/solutions-hashtable-binary-search-space-complexity-analyzed
 ```cpp
-// complexity: time O(M + N), space O(M) or O(N)
+// complexity: time O(M + N), space O(M) or O(N), should use the smaller vector to construct hash map
 class Solution {
 public:
     vector<int> intersect(vector<int>& nums1, vector<int>& nums2) {
