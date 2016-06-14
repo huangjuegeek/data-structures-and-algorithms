@@ -28,3 +28,31 @@ public:
     }
 };
 ```
+#### Solution 2:
+quad partition search, divide and conquer
+
+https://leetcode.com/discuss/77842/java-an-easy-to-understand-divide-and-conquer-method
+```
+First, we divide the matrix into four quarters as shown below:
+  zone 1      zone 2
+*  *  *  * | *  *  *  *
+*  *  *  * | *  *  *  *
+*  *  *  * | *  *  *  *
+*  *  *  * | *  *  *  *
+-----------------------
+*  *  *  * | *  *  *  *
+*  *  *  * | *  *  *  *
+*  *  *  * | *  *  *  *
+*  *  *  * | *  *  *  *
+  zone 3      zone 4
+We then compare the element in the center of the matrix with the target. There are three possibilities:
+center < target. In this case, we discard zone 1 because all elements in zone 1 are less than target.
+center > target. In this case, we discard zone 4.
+center == target. return true.
+```
+
+C++ version: https://leetcode.com/discuss/83239/clean-c-implementation-with-detailed-complexity-analysis
+
+complexity analysis: <br>
+> https://leetcode.com/discuss/47528/c-with-o-m-n-complexity <br>
+> http://articles.leetcode.com/searching-2d-sorted-matrix-part-ii
