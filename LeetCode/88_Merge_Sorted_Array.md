@@ -6,6 +6,7 @@ https://leetcode.com/problems/merge-sorted-array/
 
 ```cpp
 /*
+从最后一个元素开始往前遍历
 当nums2中所有的数字已经被合并进nums1以后，nums1中剩下的那些还没有被移动过的数字已经在正确的位置上了
 */
 class Solution {
