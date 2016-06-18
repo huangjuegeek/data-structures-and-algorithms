@@ -1,0 +1,78 @@
+## 169. Majority Element
+> https://leetcode.com/problems/majority-element/
+
+#### Solution 1: hash table
+```cpp
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        unordered_map<int, int> m;
+        for(int i = 0; i < nums.size(); i++)
+            m[nums[i]]++;
+        auto cur = m.begin();
+        for(auto i = cur; i != m.end(); i++){
+            if(cur->second < i->second) cur = i;
+        }
+        return cur->first;
+    }
+};
+```
+
+#### Solution 2: sort
+> https://leetcode.com/discuss/20608/my-answer-to-majority-element-java
+
+```cpp
+// complexity: time O(NlogN)
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+        return nums[nums.size() / 2];
+    }
+};
+```
+
+#### Solution 3: Boyer-Moore Vote Algorithm, Moore's Voting Algoritm
+> https://leetcode.com/discuss/84039/c-moores-majority-vote-algorithm-fastest-solution
+> https://leetcode.com/discuss/19153/solution-using-moores-voting-algorithm-runtime-comlexity
+> https://leetcode.com/discuss/19151/solution-computation-space-problem-can-extended-situation
+
+```
+Moore's majority vote algorithm, https://en.wikipedia.org/wiki/Boyer–Moore_majority_vote_algorithm
+Assumption: the array is non-empty and the majority element always exist in the array
+When count != 0 , it means nums[1...i] has a majority, which is major in the solution. 
+When count == 0 , it means nums[1...i ] doesn't have a majority, so nums[1...i ] will not help nums[1...n].
+And then we have a subproblem of nums[i+1...n].
+```
+```cpp
+// complexity: time O(N), space O(1)
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        int len = nums.size();
+        if(!len))    return 0;
+        int candidate = nums[0], count = 0;
+        for(int num : nums) {
+            if(count == 0) {
+                candidate = num;
+                count = 1;
+            } 
+            else if(candidate == num) {
+                count++;
+                if(count > len / 2)
+                  return candidate;
+            }
+            else
+                count--;
+        }
+        return candidate;
+    }
+};
+```
+
+#### Solution 4: bit manipuldation
+> https://leetcode.com/discuss/67340/java-solutions-sorting-hashmap-moore-voting-manipulation
+> https://leetcode.com/discuss/37122/my-c-bit-operation-solution-in-o-n-time-o-1-space-28ms
+> https://leetcode.com/discuss/42929/6-suggested-solutions-in-c-with-explanations
+> https://leetcode.com/discuss/20955/share-my-25ms-c-solution-with-o-1-memory
+> https://leetcode.com/discuss/19250/share-my-solution-java-count-bits
