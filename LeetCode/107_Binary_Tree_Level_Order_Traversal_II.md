@@ -16,8 +16,8 @@ public:
             for(int i = 0; i < size; i++) {
                 TreeNode* cur = q.front();
                 q.pop();
-                if(cur->left != NULL)  q.push(cur->left);
-                if(cur->right != NULL)  q.push(cur->right);
+                if(cur->left)  q.push(cur->left);
+                if(cur->right)  q.push(cur->right);
                 levelRes.push_back(cur->val);
             }
             res.push_back(levelRes);
