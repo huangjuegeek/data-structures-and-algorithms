@@ -13,10 +13,7 @@ class Solution {
 public:
     string reverseVowels(string s) {
         const int size = 256;
-        int hashtable[size];
-        for(int i = 0; i < size; i++) {
-            hashtable[i] = 0;
-        }
+        int hashtable[size] = {0};
         string vowels = "aeiouAEIOU";
         for(char vowel : vowels) {
             hashtable[vowel] = 1;
@@ -26,7 +23,7 @@ public:
         while(i <= j) {
             while(!hashtable[s[i]] && i < j)  i++;
             while(!hashtable[s[j]] && i < j)  j--;
-            
+
             char temp = s[i];
             s[i] = s[j];
             s[j] = temp;
