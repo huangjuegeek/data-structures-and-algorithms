@@ -1,0 +1,32 @@
+## Binary Tree Level Order Traversal
+> https://leetcode.com/problems/binary-tree-level-order-traversal/
+
+#### Solution 1: BFS
+```java
+public class Solution {
+	public List<List<Integer>> levelOrder(TreeNode root) {
+		List<List<Integer>> res = new LinkedList<List<Integer>>();
+		if(root == null) {
+			return res;
+		}
+		Queue<TreeNode> q = new LinkedList<TreeNode>();
+		q.offer(root);
+		while(!q.isEmpty()) {
+			List<Integer> levelRes = new LinkedList<Integer>();
+			int size = q.size();
+			for(int i = 0; i < size; i++) {
+				TreeNode cur = q.poll();
+				if(cur.left!=null)  
+				    q.offer(cur.left);
+				if(cur.right!=null)  
+				    q.offer(cur.right);
+				levelRes.add(cur.val);
+			}
+			res.add(levelRes);
+		}
+		return res;
+	}
+}
+```
+#### Solution 2: DFS
+https://leetcode.com/discuss/86864/my-java-2-solutions-1ms-dfs-%26-2ms-bfs
