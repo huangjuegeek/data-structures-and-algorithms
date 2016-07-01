@@ -29,22 +29,22 @@ public:
         queue<TreeNode*> ql, qr;
         ql.push(root->left);
         qr.push(root->right);
-        
+
         while(!ql.empty() && !qr.empty()) {
             TreeNode *lnode = ql.front();
             TreeNode *rnode = qr.front();
             ql.pop();
             qr.pop();
-            
+
             if(!lnode && !rnode) continue;
-            if((!lnode && rnode) || (lnode && !rnode)) return false;
+            if((!lnode || !rnode)) return false;
             if(lnode->val != rnode->val) return false;
             ql.push(lnode->left);
-            qr.push(rnode->right);
             ql.push(lnode->right);
+            qr.push(rnode->right);
             qr.push(rnode->left);
         }
-        
+
         if(!ql.empty() || !qr.empty()) return false;
         return true;
     }
