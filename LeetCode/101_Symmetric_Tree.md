@@ -10,11 +10,11 @@ public:
     bool isSymmetric(TreeNode *root) {
         return isSym(root, root);
     }
-    
+
     bool isSym(TreeNode *lr, TreeNode *rr) {
         if(!lr && !rr) return true;
-        if((!lr && rr) || (lr && !rr)) return false;
-        if(lr==rr) return isSym(lr->left, lr->right); // lr and rr both point to root
+        if((!lr || !rr)) return false;
+        if(lr == rr) return isSym(lr->left, lr->right); // lr and rr both point to root
         if(lr->val != rr->val) return false;
         return isSym(lr->left, rr->right) && isSym(lr->right, rr->left);
     }
