@@ -35,7 +35,8 @@ public:
     }
 
     bool isValid(vector<int> &col, int irow, int icol) {
-        for (int i = 0; i < col.size(); i++) {
+        int colSize = col.size();
+        for (int i = 0; i < colSize; i++) {
             if (icol == col[i] || abs(irow - i) == abs(icol - col[i]))
                 return false;
         }
