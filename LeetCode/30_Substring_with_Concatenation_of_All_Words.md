@@ -1,0 +1,17 @@
+##30. Substring with Concatenation of All Words
+> https://leetcode.com/problems/substring-with-concatenation-of-all-words/
+
+###Solution 1: 
+两个map，counts和seen<br>
+counts用于对words中的单词进行计数，<br>
+seen用于在扫描s的时候，实时统计从当前字符i开始连续出现的属于words的单词计数，<br>
+如果从字符i开始长度增量为len的字串不在counts里，则舍弃概论统计，break<br>
+如果出现seen中某个单词的计数超过counts中对应单词的计数，则舍弃该轮统计，break，<br>
+如果内层循环结束后，j==num，意味着s中从字符i开始出现了一串连续字串包含了words中的每一个单词，则将下标i加入结果集中。<br>
+但是运行太慢。<br>
+> https://discuss.leetcode.com/topic/17943/naive-c-solution-using-two-unordered_map-about-20-lines
+
+###Solution 2:
+> https://discuss.leetcode.com/topic/32038/java-12ms-beats-100
+> https://discuss.leetcode.com/topic/6617/an-o-n-solution-with-detailed-explanation
+> https://discuss.leetcode.com/topic/35676/accepted-java-solution-12ms-with-explanation
