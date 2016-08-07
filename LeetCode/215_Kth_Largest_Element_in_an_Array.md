@@ -1,0 +1,78 @@
+##215. Kth Largest Element in an Array
+> https://leetcode.com/problems/kth-largest-element-in-an-array/
+> https://discuss.leetcode.com/topic/14597/solution-explained/15
+> https://discuss.leetcode.com/topic/15256/4-c-solutions-using-partition-max-heap-priority_queue-and-multiset-respectively
+
+###Solution 1: O(NlgN) time, O(1) space
+对数组nums全排序，然后直接通过下标取第k大的数
+```java
+public class Solution {
+    public int findKthLargest(int[] nums, int k) {
+        final int N = nums.length;
+        Arrays.sort(nums);
+        return nums[N-k];
+    }
+}
+```
+
+###Solution 2: O(Nlgk) time, O(k) space
+维护容量为k的小顶堆，遍历nums数组；
+堆未满时，元素num直接入堆；
+堆满时，num与堆顶元素比较，
+若num小于等于堆顶元素，则num肯定不属于前k大的元素；
+若num大于堆顶元素，则num可能属于前k大的元素，当前堆顶元素出堆，num入堆。
+```java
+public class Solution {
+    public int findKthLargest(int[] nums, int k) {
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        for(int num : nums) {
+            if(pq.size() < k) {
+                pq.offer(num);
+            } else if(num > pq.peek()) {
+                pq.poll();
+                pq.offer(num);
+            }
+        }
+        return pq.peek();
+    }
+}
+```
+
+###Solution 3: Quick Select, avg case O(N) time, worst case O(N^2) time
+```java
+public class Solution {
+    public int findKthLargest(int[] nums, int k) {
+        k = nums.length - k;
+        int lo = 0;
+        int hi = nums.length - 1;
+        while (lo < hi) {
+            final int j = partition(nums, lo, hi);
+            if (j < k) {
+                lo = j + 1;
+            } else if (j > k) {
+                hi = j - 1;
+            } else {
+                break;
+            }
+        }
+        return nums[k];
+    }
+    
+    private int partition(int[] nums, int l, int r) {
+        int i = l, j = r, x;
+        x = nums[i];
+        while (i < j) {
+            while (i < j && nums[j] > x)
+                j--;  
+            if (i < j)
+                nums[i++] = nums[j];
+            while (i < j && nums[i] < x)
+                i++; 
+            if (i < j)
+                nums[j--] = nums[i];
+        }
+        nums[i] = x;
+        return i;
+    }
+}
+```
