@@ -1,11 +1,12 @@
 ## Intersection of Two Arrays II
-https://leetcode.com/problems/intersection-of-two-arrays-ii/
+> https://leetcode.com/problems/intersection-of-two-arrays-ii/
 
+> http://articles.leetcode.com/here-is-phone-screening-question-from/
 
-## Solution 1:
+### Solution 1:
 hash table, using unordered_map:
 
-https://leetcode.com/discuss/103956/solutions-hashtable-binary-search-space-complexity-analyzed
+> https://leetcode.com/discuss/103956/solutions-hashtable-binary-search-space-complexity-analyzed
 ```cpp
 // complexity: time O(M + N), space O(M) or O(N), should use the smaller vector to construct hash map
 class Solution {
@@ -25,7 +26,8 @@ public:
     }
 };
 ```
-https://leetcode.com/discuss/103787/table-solution-pointers-solution-with-time-space-complexity
+> https://leetcode.com/discuss/103787/table-solution-pointers-solution-with-time-space-complexity
+
 ```cpp
 /*
 Based on C++ map mechanism, if a key is not exist, access the key will assign a default value to the key. 
@@ -49,7 +51,8 @@ public:
 };
 ```
 Java version:
-https://leetcode.com/discuss/103835/ac-solution-using-java-hashmap
+> https://leetcode.com/discuss/103835/ac-solution-using-java-hashmap
+
 ## Solution 2:
 sort, two pointers:
 ```cpp
@@ -84,4 +87,4 @@ public:
 };
 ```
 C++, iterator version:
-https://leetcode.com/discuss/105464/simple-while-loop-solution-c-12ms
+> https://leetcode.com/discuss/105464/simple-while-loop-solution-c-12ms
