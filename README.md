@@ -1,2 +1,2 @@
-# oj-solutions
-My solution collection for various online judges
+# coding-problems
+Coding problems and solutions
