@@ -1,3 +1,6 @@
+* 删除一个单链表中的第奇数（或偶数）个节点
+
+```java
 public class DeleteOddOrEvenListNode {
 
     public static void main(String[] args) {
@@ -100,3 +103,5 @@ public class DeleteOddOrEvenListNode {
     }
 
 }
+
+```
