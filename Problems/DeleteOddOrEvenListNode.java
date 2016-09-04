@@ -1,5 +1,3 @@
-package com.hj.algorithm;
-
 public class DeleteOddOrEvenListNode {
 
     public static void main(String[] args) {
