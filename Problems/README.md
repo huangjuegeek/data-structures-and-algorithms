@@ -3,3 +3,6 @@
 
 # 字符串
 * [把一个给定字符串转成32位整数](https://github.com/huangjuegeek/coding-problems/blob/master/Problems/String%20to%2032bit%20Integer.md)
+
+# 数学
+* [最大公约数](https://github.com/huangjuegeek/coding-problems/blob/master/Problems/Greatest%20Common%20Divisor%20(GCD).md)
