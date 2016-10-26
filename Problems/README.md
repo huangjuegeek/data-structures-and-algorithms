@@ -9,3 +9,6 @@
 
 # 数学
 * [最大公约数](https://github.com/huangjuegeek/coding-problems/blob/master/Problems/Greatest%20Common%20Divisor%20(GCD).md)
+
+# 排序算法
+* [冒泡排序 Bubble Sort](https://github.com/huangjuegeek/coding-problems/blob/master/Problems/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8FBubble%20Sort.md)
