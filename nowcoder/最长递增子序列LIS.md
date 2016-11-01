@@ -7,7 +7,7 @@ import java.util.*;
 /*
 dp[i]表示在必须以A[i]结尾的情况下，A[0...i]中的最长递增子序列的长度。
 dp[i]怎么求？
-对于<i的所有满足A[j]<A[i](0<=j<i)的下标j，
+对于所有满足A[j]<A[i](0<=j<i)的下标j，
 找出dp[j]的最大值，则dp[i] = dp[j]的最大值 + 1
 */
 public class LongestIncreasingSubsequence {
