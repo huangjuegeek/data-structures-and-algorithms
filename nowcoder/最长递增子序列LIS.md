@@ -1,4 +1,4 @@
-# LIS(最长递增子序列)问题
+# 最长递增子序列问题 Longest Increasing Subsequence LIS
 > http://www.nowcoder.com/courses/1/12/6
 
 ## Solution 1:
@@ -18,7 +18,7 @@ public class LongestIncreasingSubsequence {
         int globalMax = 0;
         for(int i = 1; i < n; i++) {
             int dpjMax = 0;
-            for(int j = 0; j < i; j++) { //dp[i] = max{dp[j]+1}, 其中0<=j<i, A[j]<A[i]
+            for(int j = 0; j < i; j++) { //dp[i] = max{dp[j]}+1, 其中0<=j<i, A[j]<A[i]
                 if(A[j] < A[i] && dp[j] > dpjMax) {
                     dpjMax = dp[j];
                 }
