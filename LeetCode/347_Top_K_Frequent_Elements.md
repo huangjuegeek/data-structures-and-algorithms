@@ -1,7 +1,7 @@
-##347. Top K Frequent Elements
+# 347. Top K Frequent Elements
 > https://leetcode.com/problems/top-k-frequent-elements/
 
-###Solution 1:
+## Solution 1:
 用哈希表来统计每个数字出现次数，再用堆排序
 ```java
 //jdk1.7，小顶堆
@@ -81,7 +81,7 @@ public:
 };
 ```
 
-###Solution 2: 桶排序
+## Solution 2: 桶排序
 > https://discuss.leetcode.com/topic/44237/java-o-n-solution-bucket-sort/2
 
 ```java
