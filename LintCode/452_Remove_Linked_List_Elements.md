@@ -1,8 +1,9 @@
 ## 452. Remove Linked List Elements
 > http://www.lintcode.com/problem/remove-linked-list-elements
 
-#### Solution 1:
+### Solution 1:
 ```cpp
+// C++
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -39,4 +40,42 @@ public:
         return head;
     }
 };
+```
+```java
+// Java
+/**
+ * Definition for ListNode
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    /**
+     * @param head: a ListNode
+     * @param val: An integer
+     * @return: a ListNode
+     */
+    public ListNode removeElements(ListNode head, int val) {
+        ListNode dummy = new ListNode(0);
+        ListNode pre = dummy;
+        ListNode cur = head;
+        dummy.next = head;
+        while(cur != null) {
+            if (cur.val == val) {
+                pre.next = cur.next;
+                cur = pre.next;
+            } else {
+                pre = pre.next;
+                cur = cur.next;
+            }
+        }
+        head = dummy.next;
+        return head;
+    }
+}
 ```
