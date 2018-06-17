@@ -1,5 +1,7 @@
 # 计算(x^y)%N
 ```java
+import java.math.BigInteger;
+
 public class XpowYmodN {
 
     public static void main(String[] args) {
@@ -11,6 +13,7 @@ public class XpowYmodN {
                 for (long N = 1; N <= max; N++) {
                     System.out.printf("x=%d, y=%d, N=%d\n", x, y , N);
                     System.out.println("xPowYmodN result: " + solution.xPowYmodN(x, y, N));
+                    System.out.println("xPowYmodN1 result: " + solution.xPowYmodN1(x, y, N));
                     System.out.println("xPowYmodN2 result: " + solution.xPowYmodN2(x, y, N));
                 }
             }
@@ -39,10 +42,20 @@ public class XpowYmodN {
         return res;
     }
 
+    public long xPowYmodN1(long x, long y, long N) {
+        BigInteger bX = BigInteger.valueOf(x);
+        BigInteger bY = BigInteger.valueOf(y);
+        BigInteger bN = BigInteger.valueOf(N);
+
+        BigInteger res = bX.modPow(bY, bN);
+        return res.longValue();
+    }
+
     public long xPowYmodN2(long x, long y, long N) {
         double in = Math.pow(x, y);
         long res = (long)(in % N);
         return res;
     }
 }
+
 ```
