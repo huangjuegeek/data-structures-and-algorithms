@@ -8,6 +8,7 @@ public class StringTo32Int {
         if (str == null || str.isEmpty()) {
             throw new IllegalArgumentException("null or empty");
         }
+        
         boolean isNegative = false;
         int i = 0;
         int len = str.length();
