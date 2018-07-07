@@ -40,9 +40,11 @@ public class StringTo32Int {
             }
             res = res * 10 + cur;
         }
+        
         if (!isNegative && res == Integer.MIN_VALUE) {
             throw new IllegalArgumentException(str);
         }
+        
         return isNegative ? res : -res;
     }
     
