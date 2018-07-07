@@ -18,10 +18,10 @@ public class StringTo32Int {
             if (len == 1) {
                 throw new IllegalArgumentException(str);
             }
-            i++;
             if (first == '-') {
                 isNegative = true;
             }
+            i++;
         } else if (!Character.isDigit(first)) {
             throw new IllegalArgumentException(str);
         }
