@@ -17,7 +17,7 @@ public class BubbleSort {
         for (i = A.length - 1; i > 0; i--) {
             swapFlag = false;
             for (j = 0; j < i; j++) {
-                //如果索引j处的元素大于索引j+1处的元素，则交换它们
+                //如果第j个元素大于第j+1个元素，则交换它们
                 if (A[j].compareTo(A[j + 1]) > 0) {
                     T tmp = A[j];
                     A[j] = A[j + 1];
