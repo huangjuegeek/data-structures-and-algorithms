@@ -1,7 +1,7 @@
 把一个给定字符串转成32位整数
 
 ```java
-public class StringTo32Int {
+public class StringToInt32 {
 
     public static int convertStringToInt(String str) {
         if (str == null || str.isEmpty()) {
