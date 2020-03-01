@@ -46,21 +46,19 @@ public class DeleteOddOrEvenListNode {
      * @return 删除操作完成后的单链表头结点
      */
     public ListNode deleteOddListNode(ListNode head) {
-        ListNode dummy = new ListNode(Integer.MIN_VALUE);
-        ListNode pre = dummy;
-        ListNode odd = head;
-        ListNode even = null;
-        dummy.next = head;
-
-        if (odd != null) {
-            even = odd.next;
+        if (head == null || head.next == null) {
+            return null;
         }
 
-        while (odd != null) {
+        ListNode dummy = new ListNode(Integer.MIN_VALUE);
+        ListNode pre = dummy;
+        ListNode even = head.next;
+        dummy.next = head;
+
+        while (true) {
             pre.next = even;
             if (even != null && even.next != null) {
                 pre = even;
-                odd = even.next;
                 even = even.next.next;
             } else {
                 break;
@@ -76,16 +74,16 @@ public class DeleteOddOrEvenListNode {
      * @return 删除操作完成后的单链表头结点
      */
     public ListNode deleteEvenListNode(ListNode head) {
-        ListNode dummy = new ListNode(Integer.MIN_VALUE);
-        ListNode odd = head;
-        ListNode even = null;
-        dummy.next = head;
-
-        if (odd != null) {
-            even = odd.next;
+        if (head == null || head.next == null) {
+            return head;
         }
 
-        while (even != null) {
+        ListNode dummy = new ListNode(Integer.MIN_VALUE);
+        ListNode odd = head;
+        ListNode even = head.next;
+        dummy.next = head;
+
+        while (true) {
             odd.next = even.next;
             odd = even.next;
             if (odd != null && odd.next != null) {
@@ -94,6 +92,7 @@ public class DeleteOddOrEvenListNode {
                 break;
             }
         }
+
         return dummy.next;
     }
 
@@ -123,8 +122,8 @@ public class DeleteOddOrEvenListNode {
             d.printList(newHead);
         }
     }
-
 }
+
 /*
 OUTPUT:
 test for deleteOddListNode
